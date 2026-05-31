@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brenda Vega — UI Designer for Shopify &amp; E-commerce</title>
+<meta name="description" content="UI Designer focused on e-commerce, Shopify storefronts, responsive product pages, mobile-first interfaces and conversion-focused layouts.">
+<meta name="keywords" content="UI Designer, Shopify Designer, E-commerce UI, Product Designer, Responsive UI, Product Pages, Design Systems, Mobile Design">
+<meta property="og:title" content="Brenda Vega — UI Designer for Shopify &amp; E-commerce">
+<meta property="og:description" content="Portfolio especializado en UI Design para e-commerce, Shopify, product pages y responsive interfaces.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+<script>
+const savedTheme=localStorage.getItem('portfolio-theme');
+if(savedTheme==='dark'||savedTheme==='light')document.documentElement.dataset.theme=savedTheme;
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf9f6;
+  --text:#2d2d2d;
+  --muted:#525d69;
+  --accent:#d9eadf;
+  --accent-dark:#47765b;
+  --border:rgba(45,45,45,0.1);
+  --border-med:rgba(45,45,45,0.18);
+  --nav-bg:rgba(237,239,238,0.88);
+  --mobile-bg:rgba(245,245,243,0.97);
+  --success-text:#3a6e45;
+  --success-bg:rgba(180,230,195,0.4);
+  --success-border:rgba(80,160,100,0.3);
+  --success-dot:#4caf50;
+  --button-shadow:rgba(45,45,45,0.18);
+  --button-shadow-hover:rgba(45,45,45,0.2);
+  --hover-bg:rgba(255,255,255,0.7);
+  --surface-card:rgba(255,255,255,0.45);
+  --surface-card-hover:rgba(255,255,255,0.72);
+  --surface-soft:rgba(255,255,255,0.38);
+  --surface-icon:rgba(255,255,255,0.75);
+  --surface-pill:rgba(255,255,255,0.6);
+  --badge-bg:rgba(82,93,105,0.1);
+  --project-chip-bg:var(--accent);
+  --nav-shadow:rgba(45,45,45,0.06);
+  --card-shadow:rgba(45,45,45,0.1);
+}
+[data-theme="dark"]{
+  --bg:#111212;
+  --text:#e8e6e3;
+  --muted:#8a8f8c;
+  --accent:#47765b;
+  --accent-dark:#b8dbc5;
+  --border:rgba(255,255,255,0.07);
+  --border-med:rgba(255,255,255,0.13);
+  --nav-bg:rgba(17,18,18,0.88);
+  --mobile-bg:rgba(17,18,18,0.97);
+  --success-text:#9bc89d;
+  --success-bg:rgba(90,158,90,0.14);
+  --success-border:rgba(90,158,90,0.28);
+  --success-dot:#5a9e5a;
+  --button-shadow:rgba(0,0,0,0.38);
+  --button-shadow-hover:rgba(0,0,0,0.42);
+  --hover-bg:rgba(255,255,255,0.08);
+  --surface-card:rgba(255,255,255,0.06);
+  --surface-card-hover:rgba(255,255,255,0.1);
+  --surface-soft:rgba(255,255,255,0.05);
+  --surface-icon:rgba(255,255,255,0.07);
+  --surface-pill:rgba(255,255,255,0.06);
+  --badge-bg:rgba(255,255,255,0.06);
+  --project-chip-bg:rgba(201,127,125,0.15);
+  --nav-shadow:rgba(0,0,0,0.32);
+  --card-shadow:rgba(0,0,0,0.34);
+}
+html{overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+a{color:var(--text);text-decoration:none}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;
+  background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:0.5px solid var(--border-med);border-radius:100px;
+  padding:0 1.5rem 0 1.25rem;
+  display:flex;justify-content:space-between;align-items:center;
+  height:48px;gap:4rem;min-width:580px;
+  box-shadow:0 2px 20px var(--nav-shadow)
+}
+.nav-brand{display:flex;align-items:center;gap:.5rem}
+.nav-logo{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.01em;white-space:nowrap}
+.nav-role{font-size:12px;color:var(--muted);white-space:nowrap}
+.nav-sep{width:0.5px;height:14px;background:var(--border-med)}
+.nav-links{display:flex;gap:2rem;font-size:13px}
+.nav-links a{color:var(--muted);transition:color .18s}
+.nav-links a:hover{color:var(--text)}
+.theme-toggle{
+  width:32px;height:32px;border-radius:50%;border:0.5px solid var(--border-med);
+  background:var(--surface-soft);color:var(--muted);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;flex-shrink:0;font-size:13px
+}
+.theme-toggle svg{width:16px;height:16px;display:block}
+.theme-toggle svg path{fill:currentColor}
+.theme-toggle:hover{color:var(--text);background:var(--hover-bg)}
+.theme-icon-dark{display:none}
+[data-theme="dark"] .theme-icon-light{display:none}
+[data-theme="dark"] .theme-icon-dark{display:inline}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.35rem;font-size:13.5px;font-family:'Inter',sans-serif;font-weight:500;border-radius:100px;border:none;cursor:pointer;transition:all .25s cubic-bezier(.34,1.56,.64,1);letter-spacing:.005em;text-decoration:none}
+.btn-primary{background:var(--text);color:var(--bg);box-shadow:0 1px 8px var(--button-shadow)}
+.btn-primary:hover{transform:scale(1.04) translateY(-1px);box-shadow:0 6px 22px var(--button-shadow-hover);color:var(--bg)}
+.btn-primary:active{transform:scale(0.97)}
+.btn-ghost{background:transparent;color:var(--text);border:0.5px solid var(--border-med)}
+.btn-ghost:hover{background:var(--hover-bg);transform:scale(1.04) translateY(-1px)}
+.btn-ghost:active{transform:scale(0.97)}
+
+/* ── LAYOUT ── */
+section{padding:5.5rem 2rem;max-width:1000px;margin:0 auto}
+.divider{height:0.5px;background:var(--border-med);margin:0 2rem}
+.section-label{font-size:10.5px;letter-spacing:.12em;color:var(--accent-dark);text-transform:uppercase;margin-bottom:.55rem;font-family:'Inter',sans-serif;font-weight:500}
+.section-title{font-family:'Poppins',sans-serif;font-size:1.85rem;font-weight:700;color:var(--text);margin-bottom:2.75rem;letter-spacing:-.025em}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr auto;gap:3rem;
+  align-items:center;padding-top:80px;max-width:1000px;margin:0 auto;
+  padding-left:2rem;padding-right:2rem
+}
+.hero-left{display:flex;flex-direction:column;align-items:flex-start;max-width:600px;min-width:0}
+.hero-right{display:flex;align-items:center;justify-content:flex-end;flex-shrink:0}
+.hero-avatar{width:clamp(220px,26vw,320px);height:auto;display:block}
+.hero-avatar-dark{display:none}
+[data-theme="dark"] .hero-avatar-light{display:none}
+[data-theme="dark"] .hero-avatar-dark{display:block}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:11px;letter-spacing:.03em;color:var(--success-text);
+  background:var(--success-bg);border:0.5px solid var(--success-border);
+  border-radius:100px;padding:.32rem .9rem;margin-bottom:2rem;width:fit-content
+}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--success-dot);animation:pulse 2.2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.75)}}
+.hero h1{font-family:'Poppins',sans-serif;font-size:clamp(2.8rem,5vw,3.8rem);font-weight:700;line-height:1.05;color:var(--text);margin-bottom:.85rem;letter-spacing:-.035em}
+.hero-subtitle{font-family:'Poppins',sans-serif;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:var(--text);line-height:1.35;margin-bottom:1.25rem;max-width:480px}
+.hero-desc{font-size:14.5px;color:var(--muted);max-width:440px;line-height:1.78;margin-bottom:2rem}
+.hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.75rem}
+.hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:.65rem 1.5rem;max-width:480px}
+.meta-item{display:inline-flex;align-items:center;gap:.4rem;font-size:12px;color:var(--muted);min-width:0;max-width:100%;overflow-wrap:anywhere}
+.meta-item svg{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:3.5rem;align-items:start}
+.about-text p{color:var(--muted);line-height:1.82;margin-bottom:1.1rem;font-size:14.5px}
+.pillars{display:flex;flex-direction:column;gap:.85rem}
+.pillar{border:0.5px solid var(--border);border-radius:20px;padding:1.75rem;background:var(--surface-soft);transition:all .22s}
+.pillar:hover{background:var(--surface-card-hover);box-shadow:0 2px 16px var(--card-shadow)}
+.pillar-num{font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:500;color:var(--accent-dark);margin-bottom:.4rem;line-height:1}
+.pillar-title{font-size:15px;font-weight:600;color:var(--text);font-family:'Poppins',sans-serif;margin-bottom:.35rem;line-height:1.2}
+.pillar-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ── PROJECT CARDS ── */
+.projects{display:flex;flex-direction:column;gap:1.5rem}
+.project-card{border:0.5px solid var(--border-med);border-radius:22px;overflow:hidden;background:var(--surface-card);transition:all .28s cubic-bezier(.25,.8,.25,1)}
+.project-card:hover{background:var(--surface-card-hover);box-shadow:0 8px 36px var(--card-shadow);transform:translateY(-2px)}
+.project-img-wrap{position:relative;width:100%;background:#111214;overflow:hidden;height:320px;cursor:zoom-in}
+.project-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s ease}
+.project-card:first-child .project-img-wrap{height:430px;background:#f7f7f5}
+.project-card:first-child .project-img-wrap img{object-fit:contain}
+.project-card:hover .project-img-wrap img{transform:scale(1.025)}
+.project-img-overlay{display:none}
+.project-img-wrap a{display:block;width:100%;height:100%;position:absolute;inset:0}
+.project-content{padding:2rem 2rem 1.75rem}
+.project-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:.75rem;min-width:0}
+.project-num{font-size:11px;color:var(--muted);letter-spacing:.08em}
+.project-tag{font-size:11px;background:var(--project-chip-bg);color:var(--accent-dark);padding:.28rem .85rem;border-radius:100px;font-weight:500;white-space:nowrap;max-width:100%;overflow-wrap:anywhere}
+.project-title{font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:.25rem;letter-spacing:-.02em}
+.project-sub{font-size:12px;color:var(--muted);margin-bottom:1.6rem}
+.project-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+.project-block h4{font-size:10px;letter-spacing:.12em;color:var(--accent-dark);text-transform:uppercase;margin-bottom:.5rem;font-weight:500}
+.project-block p,.project-block li{font-size:12.5px;color:var(--muted);line-height:1.75}
+.project-block ul{padding-left:1.1rem}
+.project-insight{margin-top:1.5rem;border-top:0.5px solid var(--border);padding-top:1.35rem}
+.insight-text{font-size:13px;color:var(--muted);font-style:italic;line-height:1.7;border-left:2px solid var(--accent-dark);padding-left:1rem}
+.stack-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}
+.pill{font-size:11px;background:var(--surface-pill);color:var(--muted);padding:.22rem .7rem;border-radius:100px;border:0.5px solid var(--border-med)}
+.versioning{margin-top:1rem;display:flex;gap:.5rem;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.ver-badge{background:var(--badge-bg);color:var(--muted);border-radius:6px;padding:.15rem .55rem;font-size:11px;font-weight:500}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.skill-card{border:0.5px solid var(--border-med);border-radius:18px;padding:1.5rem 1.4rem 1.65rem;background:var(--surface-soft);min-width:0;max-width:100%;overflow-wrap:anywhere}
+.skill-card-icon{width:36px;height:36px;border-radius:10px;background:var(--surface-icon);border:0.5px solid var(--border-med);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.skill-card-icon svg{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.skill-card-title{font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:var(--text);margin-bottom:.85rem;letter-spacing:-.01em}
+.skill-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:.38rem}
+.skill-list li{display:flex;align-items:center;gap:.5rem;font-size:13px;color:var(--muted);line-height:1.5}
+.skill-dot{width:6px;height:6px;border-radius:50%;background:var(--accent-dark);flex-shrink:0}
+
+/* ── CONTACT ── */
+.contact-section{text-align:center}
+.contact-section .section-label{display:block;text-align:center}
+.contact-section .section-title{font-size:clamp(2.4rem,5vw,3.4rem);font-weight:700;letter-spacing:-.035em;margin-bottom:.7rem}
+.contact-subtitle{font-size:15px;color:var(--muted);margin:0 auto 2.75rem;max-width:460px;line-height:1.65}
+.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:680px;margin:0 auto 2.25rem}
+.contact-card{border:0.5px solid var(--border-med);border-radius:18px;padding:1.75rem 1.6rem;background:var(--surface-soft);text-align:left}
+.contact-card-label{font-size:10px;letter-spacing:.12em;color:var(--accent-dark);text-transform:uppercase;margin-bottom:1.25rem;font-weight:500;display:block}
+.contact-rows{display:flex;flex-direction:column;gap:.85rem}
+.contact-row{display:flex;align-items:center;gap:.65rem}
+.contact-row-icon{width:30px;height:30px;border-radius:8px;background:var(--surface-icon);border:0.5px solid var(--border-med);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-row-icon svg{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.contact-row-info{display:flex;flex-direction:column;gap:.05rem}
+.contact-row-key{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.contact-row-val{font-size:13px;color:var(--text)}
+.available-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem}
+.available-list li{display:flex;align-items:center;gap:.55rem;font-size:14px;color:var(--text)}
+.available-dot{width:7px;height:7px;border-radius:50%;background:var(--accent-dark);flex-shrink:0}
+.contact-cta{display:flex;gap:.75rem;justify-content:center}
+
+.insight-result{font-size:12.5px;color:var(--accent-dark);margin-top:.65rem;padding-left:1rem;font-weight:500}
+
+
+
+/* ── LIGHTBOX ── */
+.lb{position:fixed;inset:0;z-index:999;background:rgba(15,15,15,0.75);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .28s ease}
+.lb.on{opacity:1;pointer-events:all}
+.lb img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 70px rgba(0,0,0,0.6);transform:scale(.95);transition:transform .28s cubic-bezier(.25,.8,.25,1)}
+.lb.on img{transform:scale(1)}
+.lb-x{position:fixed;top:18px;right:22px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.1);border:0.5px solid rgba(255,255,255,0.2);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lb-x:hover{background:rgba(255,255,255,0.2)}
+
+/* ── HAMBURGER ── */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.25rem;background:none;border:none}
+.nav-hamburger span{display:block;width:20px;height:1.5px;background:var(--text);border-radius:2px;transition:all .25s ease}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-mobile{
+  display:none;position:fixed;top:72px;left:16px;right:16px;z-index:99;
+  background:var(--mobile-bg);backdrop-filter:blur(20px);
+  border:0.5px solid var(--border-med);border-radius:16px;
+  padding:1rem 1.5rem;flex-direction:column;gap:.15rem;
+  box-shadow:0 8px 32px var(--card-shadow)
+}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-size:15px;color:var(--muted);padding:.65rem 0;border-bottom:0.5px solid var(--border);transition:color .18s}
+.nav-mobile a:last-child{border-bottom:none}
+.nav-mobile a:hover{color:var(--text)}
+
+/* ── WHATSAPP BUTTON ── */
+.wa-btn{
+  position:fixed;bottom:28px;right:28px;z-index:200;
+  width:52px;height:52px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(37,211,102,0.35),0 2px 8px rgba(0,0,0,0.12);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease;
+  text-decoration:none
+}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,0.45),0 3px 12px rgba(0,0,0,0.15)}
+.wa-btn svg{width:28px;height:28px;fill:#fff}
+footer{border-top:0.5px solid var(--border-med);padding:2rem;text-align:center;font-size:12px;color:var(--muted)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:768px){
+  nav{width:calc(100vw - 32px);min-width:0;max-width:calc(100vw - 32px);top:12px;border-radius:16px;gap:1rem}
+  .nav-links{display:none}
+  .nav-role,.nav-sep{display:none}
+  .nav-hamburger{display:flex}
+  .hero{grid-template-columns:minmax(0,1fr);padding-top:100px;width:100%;max-width:100%;overflow:hidden}
+  .hero-left,.hero-subtitle,.hero-desc,.hero-tag{width:calc(100vw - 4rem)!important;max-width:calc(100vw - 4rem)!important;min-width:0}
+  .hero-subtitle,.hero-desc{overflow-wrap:anywhere}
+  .hero-tag{white-space:normal}
+  .hero-right{display:none}
+  .hero h1{font-size:2.3rem}
+  .hero-meta{grid-template-columns:1fr;max-width:100%}
+  .about-grid,.project-body{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-cards{grid-template-columns:1fr;max-width:100%}
+  .project-header{flex-wrap:wrap;align-items:flex-start}
+  .project-tag{white-space:normal}
+}
+@media(max-width:390px){
+  nav{width:calc(100vw - 24px);max-width:calc(100vw - 24px)}
+  .nav-mobile{left:12px;right:12px}
+  .nav-brand{min-width:0}
+  .nav-logo{overflow-wrap:anywhere;white-space:normal}
+  .hero-meta{min-width:0}
+  .skills-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .hero-left,.hero-subtitle,.hero-desc,.hero-tag{width:min(calc(100vw - 4rem),326px)!important;max-width:min(calc(100vw - 4rem),326px)!important}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span class="nav-logo">Brenda Vega</span>
+    <span class="nav-sep"></span>
+    <span class="nav-role">E-commerce UI Designer</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Proyectos</a>
+    <a href="#skills">Habilidades</a>
+    <a href="#contact">Contacto</a>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a modo oscuro">
+    <span class="theme-icon-light" aria-hidden="true">
+      <svg viewBox="0 0 16 16" focusable="false"><path d="M8 15.904C5.77733 15.904 3.88833 15.1263 2.333 13.571C0.777666 12.0157 0 10.1267 0 7.904C0 5.878 0.66 4.12133 1.98 2.634C3.3 1.14667 4.93467 0.268667 6.884 0C6.938 0 6.991 0.00200004 7.043 0.00600004C7.095 0.01 7.146 0.0156664 7.196 0.0229998C6.85867 0.493666 6.59167 1.017 6.395 1.593C6.19833 2.169 6.1 2.77267 6.1 3.404C6.1 5.182 6.722 6.693 7.966 7.937C9.21 9.181 10.7213 9.80333 12.5 9.804C13.134 9.804 13.7383 9.70567 14.313 9.509C14.8877 9.31233 15.4037 9.04533 15.861 8.708C15.869 8.758 15.8747 8.809 15.878 8.861C15.8813 8.913 15.8833 8.966 15.884 9.02C15.628 10.9687 14.7563 12.603 13.269 13.923C11.7817 15.243 10.026 15.9033 8 15.904ZM7.999 14.904C9.46567 14.904 10.7823 14.4997 11.949 13.691C13.1157 12.8823 13.9657 11.8283 14.499 10.529C14.1657 10.6123 13.8323 10.679 13.499 10.729C13.1657 10.779 12.8323 10.804 12.499 10.804C10.4497 10.804 8.704 10.0833 7.262 8.642C5.82 7.20067 5.09933 5.45467 5.1 3.404C5.1 3.07067 5.125 2.73733 5.175 2.404C5.225 2.07067 5.29167 1.73733 5.375 1.404C4.075 1.93733 3.02067 2.78733 2.212 3.954C1.40333 5.12067 0.999333 6.43733 1 7.904C1 9.83733 1.68333 11.4873 3.05 12.854C4.41667 14.2207 6.06567 14.904 7.999 14.904Z"/></svg>
+    </span>
+    <span class="theme-icon-dark" aria-hidden="true">☼</span>
+  </button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#about" class="nav-mobile-link">About</a>
+  <a href="#projects" class="nav-mobile-link">Proyectos</a>
+  <a href="#skills" class="nav-mobile-link">Habilidades</a>
+  <a href="#contact" class="nav-mobile-link">Contacto</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-left reveal">
+    <div class="hero-tag">
+      <span class="hero-dot"></span>Disponible para roles UI Designer · Shopify · E-commerce
+    </div>
+    <h1>Brenda Vega</h1>
+    <div class="hero-subtitle">UI Designer focused on E-commerce &amp; Responsive Interfaces</div>
+    <p class="hero-desc">Diseño interfaces comerciales para tiendas digitales, product pages y layouts responsivos, combinando jerarquía visual, sistemas de componentes y criterios de conversión para experiencias claras en mobile, tablet y desktop.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">Ver proyectos →</a>
+      <a class="btn btn-ghost" href="CV_UIUX_BrendaVega_2026_v2.pdf" target="_blank">Ver CV</a>
+    </div>
+    <div class="hero-meta">
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>San Luis Potosí, MX
+      </span>
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>brendavegavqz@gmail.com
+      </span>
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>linkedin.com/in/brendavega012
+      </span>
+      <a class="meta-item" href="https://brendavega.xyz/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>brendavega.xyz
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="brenda-vega-avatar.svg" alt="Brenda Vega" class="hero-avatar hero-avatar-light">
+    <img src="brenda-vega-avatar-dark.svg" alt="Brenda Vega" class="hero-avatar hero-avatar-dark">
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Sobre mí</div>
+  <div class="section-title">Diseñadora enfocada en e-commerce UI</div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>Soy UI Designer con formación en Diseño Gráfico (UASLP) y Marketing Digital (IEU), enfocada en interfaces para e-commerce, Shopify y productos digitales responsivos.</p>
+      <p>Mi trabajo une composición visual, jerarquía de contenido y criterios comerciales: que una tienda se vea clara, confiable y fácil de recorrer desde el primer scroll hasta la ficha de producto.</p>
+      <p>Diseño desde sistemas de componentes en Figma: navegación, banners, cards, grillas, product pages, estados y layouts adaptables para mobile, tablet y desktop.</p>
+      <p>Busco roles donde pueda aportar claridad visual, consistencia de interfaz y sensibilidad por la conversión sin perder una experiencia cuidada para el usuario.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Mobile-first storefronts</div>
+        <div class="pillar-desc">Prioridad visual, navegación clara y layouts pensados para compra desde pantallas pequeñas.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">UI orientada a conversión</div>
+        <div class="pillar-desc">Diseño jerarquías, llamadas a la acción y product cards que ayudan a decidir sin saturar.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Sistemas reutilizables</div>
+        <div class="pillar-desc">Componentes, spacing y variantes consistentes para escalar páginas y colecciones.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Casos de estudio</div>
+  <div class="section-title">Proyectos seleccionados</div>
+  <div class="projects">
+
+    <div class="project-card reveal">
+      <div class="project-img-wrap">
+        <img src="tokopedia-mobile-adaptation.png" alt="Tokopedia mobile adaptation UI design" loading="lazy">
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-header">
+          <span class="project-num">CASO 01</span>
+          <span class="project-tag">Mobile UI · E-commerce · Product Cards</span>
+        </div>
+        <div class="project-title">Tokopedia Mobile Adaptation</div>
+        <div class="project-sub">Case study principal · Mobile-first UI exercise</div>
+        <div class="project-body">
+          <div class="project-block">
+            <h4>Objetivo</h4>
+            <p>Adaptar una experiencia de marketplace a una lectura mobile-first, priorizando navegación, producto, precio, confianza y acciones de compra.</p>
+          </div>
+          <div class="project-block">
+            <h4>Qué trabajé</h4>
+            <ul>
+              <li>Jerarquía visual para categorías, promos y producto</li>
+              <li>Componentes reutilizables para cards, banners y navegación</li>
+              <li>Sistema de spacing para mantener ritmo entre secciones</li>
+              <li>Patrones de product cards con foco en escaneo rápido</li>
+            </ul>
+          </div>
+          <div class="project-block">
+            <h4>Criterio UI</h4>
+            <ul>
+              <li>Mobile-first thinking</li>
+              <li>Navegación inferior y accesos rápidos</li>
+              <li>Separación clara entre contenido comercial y utilitario</li>
+              <li>Conversión y UX visual sin saturar la pantalla</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-insight">
+          <p class="insight-text">En mobile commerce, la conversión depende de una jerarquía que permita entender oferta, producto y acción en segundos.</p>
+          <p class="insight-result">Resultado: una adaptación más escaneable, modular y preparada para crecer con nuevas categorías o campañas.</p>
+        </div>
+        <div class="stack-pills">
+          <span class="pill">Figma</span><span class="pill">Mobile Design</span><span class="pill">Product Cards</span><span class="pill">Spacing System</span><span class="pill">E-commerce UI</span><span class="pill">Conversion-focused</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-img-wrap">
+        <img src="dulce-felicidad-shopify-concept.png" alt="Dulce Felicidad Shopify concept storefront UI" loading="lazy">
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-header">
+          <span class="project-num">CASO 02</span>
+          <span class="project-tag">Shopify Concept · Storefront UI · Branding</span>
+        </div>
+        <div class="project-title">Dulce Felicidad Shopify Concept</div>
+        <div class="project-sub">E-commerce UI · Shopify storefront concept</div>
+        <div class="project-body">
+          <div class="project-block">
+            <h4>Objetivo</h4>
+            <p>Convertir una identidad dulce y comercial en una experiencia Shopify clara, cálida y lista para mostrar productos por colección.</p>
+          </div>
+          <div class="project-block">
+            <h4>Qué incluye</h4>
+            <ul>
+              <li>Home e-commerce con banners promocionales</li>
+              <li>Product page con foco en imagen, precio y CTA</li>
+              <li>Collection page para navegación por categorías</li>
+              <li>Branding aplicado a componentes comerciales</li>
+            </ul>
+          </div>
+          <div class="project-block">
+            <h4>UI comercial</h4>
+            <ul>
+              <li>Layouts responsivos para tienda</li>
+              <li>Grillas de producto y cards reutilizables</li>
+              <li>Secciones de campaña y destacados</li>
+              <li>Estética limpia tipo storefront</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-insight">
+          <p class="insight-text">Una tienda no solo necesita verse bonita: necesita ordenar catálogo, deseo y decisión de compra con claridad visual.</p>
+          <p class="insight-result">Resultado: concepto listo para presentar como base visual de Shopify storefront y páginas comerciales.</p>
+        </div>
+        <div class="stack-pills">
+          <span class="pill">Shopify UI</span><span class="pill">Product Page</span><span class="pill">Collection Page</span><span class="pill">Banners</span><span class="pill">Responsive Layouts</span><span class="pill">Brand UI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-img-wrap">
+        <img src="fidex-capital-ui-system.png" alt="Fidex Capital responsive UI system" loading="lazy">
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-header">
+          <span class="project-num">CASO 03</span>
+          <span class="project-tag">Responsive UI · Design System · Layouts</span>
+        </div>
+        <div class="project-title">Fidex Capital</div>
+        <div class="project-sub">UI Designer · Responsive product layouts · 2023-2024</div>
+        <div class="project-body">
+          <div class="project-block">
+            <h4>Problema</h4>
+            <p>Necesidad de una interfaz consistente entre desktop, tablet y mobile, con componentes documentados para desarrollo.</p>
+          </div>
+          <div class="project-block">
+            <h4>Qué hice</h4>
+            <ul>
+              <li>Design system en Figma</li>
+              <li>Componentes, estados y tokens visuales</li>
+              <li>Layouts responsivos para landing y contenido</li>
+              <li>Documentación de uso para handoff</li>
+            </ul>
+          </div>
+          <div class="project-block">
+            <h4>Enfoque</h4>
+            <ul>
+              <li>Consistencia visual entre breakpoints</li>
+              <li>Grillas y spacing reutilizables</li>
+              <li>Dark/light mode como sistema</li>
+              <li>Arquitectura clara para escalar páginas</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-insight">
+          <p class="insight-text">Un sistema responsivo reduce fricción de implementación y mantiene coherencia cuando el producto crece.</p>
+          <p class="insight-result">Resultado: componentes reutilizables y una base visual estable para construir más layouts.</p>
+        </div>
+        <div class="stack-pills">
+          <span class="pill">Figma</span><span class="pill">Design Systems</span><span class="pill">Responsive UI</span><span class="pill">Design Tokens</span><span class="pill">Layouts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-img-wrap">
+        <img src="kairos-phronesis-dashboard-ui-system.png" alt="Kairos and Phronesis dashboard UI systems" loading="lazy">
+        <div class="project-img-overlay"></div>
+      </div>
+      <div class="project-content">
+        <div class="project-header">
+          <span class="project-num">CASO 04</span>
+          <span class="project-tag">Dashboards · Information Architecture · UI Systems</span>
+        </div>
+        <div class="project-title">Kairos / Phronesis</div>
+        <div class="project-sub">Dashboard UI · Information architecture · 2023-2025</div>
+        <div class="project-body">
+          <div class="project-block">
+            <h4>Problema</h4>
+            <p>Organizar información compleja en dashboards claros, con navegación, estados y módulos fáciles de interpretar.</p>
+          </div>
+          <div class="project-block">
+            <h4>Qué hice</h4>
+            <ul>
+              <li>Sistema visual para dashboards</li>
+              <li>Arquitectura de información por módulos</li>
+              <li>Componentes para tablas, cards y estados</li>
+              <li>Versiones dark/light para lectura sostenida</li>
+            </ul>
+          </div>
+          <div class="project-block">
+            <h4>Enfoque</h4>
+            <ul>
+              <li>Lectura rápida de indicadores</li>
+              <li>Navegación lateral y jerarquía por tareas</li>
+              <li>UI systems para producto complejo</li>
+              <li>Escalabilidad visual entre vistas</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-insight">
+          <p class="insight-text">Los dashboards funcionan mejor cuando la arquitectura reduce ruido y guía la lectura de datos por prioridad.</p>
+          <p class="insight-result">Resultado: interfaces más ordenadas, consistentes y preparadas para múltiples flujos de información.</p>
+        </div>
+        <div class="stack-pills">
+          <span class="pill">Dashboards</span><span class="pill">Information Architecture</span><span class="pill">UI Systems</span><span class="pill">Figma</span><span class="pill">Responsive Layouts</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Herramientas y habilidades</div>
+  <div class="section-title">Stack</div>
+  <div class="skills-grid reveal">
+
+    <div class="skill-card">
+      <div class="skill-card-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="skill-card-title">UI Design</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>Figma</li>
+        <li><span class="skill-dot"></span>Auto layout</li>
+        <li><span class="skill-dot"></span>Responsive UI</li>
+        <li><span class="skill-dot"></span>Mobile Design</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div class="skill-card-title">E-commerce UI</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>Product Pages</li>
+        <li><span class="skill-dot"></span>Collection Pages</li>
+        <li><span class="skill-dot"></span>Product Cards</li>
+        <li><span class="skill-dot"></span>Storefront Layouts</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+      </div>
+      <div class="skill-card-title">Design Systems</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>Componentes</li>
+        <li><span class="skill-dot"></span>Variantes</li>
+        <li><span class="skill-dot"></span>Tokens</li>
+        <li><span class="skill-dot"></span>Spacing systems</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="skill-card-title">Conversion UI</div>
+      <ul class="skill-list">
+        <li><span class="skill-dot"></span>Jerarquía visual</li>
+        <li><span class="skill-dot"></span>Banners comerciales</li>
+        <li><span class="skill-dot"></span>CTA clarity</li>
+        <li><span class="skill-dot"></span>Shopify-ready UI</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <span class="section-label">Contacto</span>
+  <h2 class="section-title">Hablemos</h2>
+  <p class="contact-subtitle">Me interesa trabajar en e-commerce, Shopify storefronts y productos donde la claridad visual ayude a comprar mejor.</p>
+
+  <div class="contact-cards reveal">
+    <div class="contact-card">
+      <span class="contact-card-label">Email / Redes</span>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-row-info">
+            <span class="contact-row-key">Email</span>
+            <a class="contact-row-val" href="mailto:brendavegavqz@gmail.com">brendavegavqz@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div class="contact-row-info">
+            <span class="contact-row-key">LinkedIn</span>
+            <a class="contact-row-val" href="https://linkedin.com/in/brendavega012" target="_blank">/in/brendavega012</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <div class="contact-row-info">
+            <span class="contact-row-key">Website</span>
+            <a class="contact-row-val" href="https://brendavega.xyz/" target="_blank" rel="noopener">brendavega.xyz</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-row-info">
+            <span class="contact-row-key">Ubicación</span>
+            <span class="contact-row-val">San Luis Potosí, MX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <span class="contact-card-label">Disponible para</span>
+      <ul class="available-list">
+        <li><span class="available-dot"></span>UI Designer para e-commerce</li>
+        <li><span class="available-dot"></span>Shopify storefront UI</li>
+        <li><span class="available-dot"></span>Product pages y collections</li>
+        <li><span class="available-dot"></span>Responsive design systems</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="contact-cta reveal">
+    <a class="btn btn-primary" href="mailto:brendavegavqz@gmail.com">Escribirme</a>
+    <a class="btn btn-ghost" href="#projects">Ver proyectos</a>
+  </div>
+</section>
+
+<footer>
+  Brenda Vega Vázquez · UI Designer · Shopify · E-commerce UI · Responsive Interfaces · San Luis Potosí, MX
+</footer>
+
+<a class="wa-btn" href="https://wa.me/4445492516?text=Hola%20Brenda,%20vi%20tu%20portafolio%20y%20me%20interesa%20contactarte" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Lightbox -->
+<div class="lb" id="lb"><button class="lb-x" id="lb-x">✕</button><img id="lb-img" src="" alt=""></div>
+
+<script>
+// ── Scroll reveal ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, {threshold: 0.07});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── Smooth scroll + cierra menú mobile ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('nav-mobile').classList.remove('open');
+  });
+});
+
+// ── Hamburger ──
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('nav-mobile');
+const themeToggle = document.getElementById('theme-toggle');
+function syncThemeButton(){
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  themeToggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+}
+syncThemeButton();
+themeToggle.addEventListener('click', e => {
+  e.stopPropagation();
+  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('portfolio-theme', next);
+  syncThemeButton();
+});
+hamburger.addEventListener('click', e => {
+  e.stopPropagation();
+  hamburger.classList.toggle('open');
+  navMobile.classList.toggle('open');
+});
+document.addEventListener('click', e => {
+  if(!hamburger.contains(e.target) && !navMobile.contains(e.target)){
+    hamburger.classList.remove('open');
+    navMobile.classList.remove('open');
+  }
+});
+
+// ── Lightbox ──
+const lb    = document.getElementById('lb');
+const lbImg = document.getElementById('lb-img');
+const lbX   = document.getElementById('lb-x');
+
+function lbOpen(src, alt){
+  lbImg.src = src;
+  lbImg.alt = alt;
+  lb.classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function lbClose(){
+  lb.classList.remove('on');
+  document.body.style.overflow = '';
+  setTimeout(() => { lbImg.src = ''; }, 300);
+}
+
+document.querySelectorAll('.project-img-wrap img').forEach(img => {
+  img.addEventListener('click', () => lbOpen(img.src, img.alt));
+});
+lbX.addEventListener('click', lbClose);
+lb.addEventListener('click', e => { if(e.target === lb) lbClose(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') lbClose(); });
+</script>
+</body>
+</html>
