@@ -66,7 +66,7 @@ if(savedTheme==='dark'||savedTheme==='light')document.documentElement.dataset.th
   --surface-icon:rgba(255,255,255,0.07);
   --surface-pill:rgba(255,255,255,0.06);
   --badge-bg:rgba(255,255,255,0.06);
-  --project-chip-bg:rgba(201,127,125,0.15);
+  --project-chip-bg:rgba(184,219,197,0.14);
   --nav-shadow:rgba(0,0,0,0.32);
   --card-shadow:rgba(0,0,0,0.34);
 }
@@ -141,6 +141,8 @@ section{padding:5.5rem 2rem;max-width:1000px;margin:0 auto}
 .hero h1{font-family:'Poppins',sans-serif;font-size:clamp(2.8rem,5vw,3.8rem);font-weight:700;line-height:1.05;color:var(--text);margin-bottom:.85rem;letter-spacing:-.035em}
 .hero-subtitle{font-family:'Poppins',sans-serif;font-size:clamp(1rem,2vw,1.2rem);font-weight:500;color:var(--text);line-height:1.35;margin-bottom:1.25rem;max-width:480px}
 .hero-desc{font-size:14.5px;color:var(--muted);max-width:440px;line-height:1.78;margin-bottom:2rem}
+.hero-proof{display:flex;flex-wrap:wrap;gap:.45rem;margin:-.75rem 0 1.65rem;max-width:520px}
+.proof-chip{font-size:11px;color:var(--accent-dark);background:var(--surface-pill);border:0.5px solid var(--border-med);border-radius:100px;padding:.25rem .7rem}
 .hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.75rem}
 .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:.65rem 1.5rem;max-width:480px}
 .meta-item{display:inline-flex;align-items:center;gap:.4rem;font-size:12px;color:var(--muted);min-width:0;max-width:100%;overflow-wrap:anywhere}
@@ -148,8 +150,12 @@ section{padding:5.5rem 2rem;max-width:1000px;margin:0 auto}
 
 
 /* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:3.5rem;align-items:start}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:start}
 .about-text p{color:var(--muted);line-height:1.82;margin-bottom:1.1rem;font-size:14.5px}
+.commerce-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1.4rem}
+.commerce-item{border:0.5px solid var(--border-med);border-radius:16px;background:var(--surface-soft);padding:1rem}
+.commerce-kicker{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:.2rem}
+.commerce-value{font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:600;color:var(--text)}
 .pillars{display:flex;flex-direction:column;gap:.85rem}
 .pillar{border:0.5px solid var(--border);border-radius:20px;padding:1.75rem;background:var(--surface-soft);transition:all .22s}
 .pillar:hover{background:var(--surface-card-hover);box-shadow:0 2px 16px var(--card-shadow)}
@@ -158,13 +164,13 @@ section{padding:5.5rem 2rem;max-width:1000px;margin:0 auto}
 .pillar-desc{font-size:13px;color:var(--muted);line-height:1.65}
 
 /* ── PROJECT CARDS ── */
-.projects{display:flex;flex-direction:column;gap:1.5rem}
-.project-card{border:0.5px solid var(--border-med);border-radius:22px;overflow:hidden;background:var(--surface-card);transition:all .28s cubic-bezier(.25,.8,.25,1)}
-.project-card:hover{background:var(--surface-card-hover);box-shadow:0 8px 36px var(--card-shadow);transform:translateY(-2px)}
-.project-img-wrap{position:relative;width:100%;background:#111214;overflow:hidden;height:320px;cursor:zoom-in}
+.projects{display:flex;flex-direction:column;gap:1.75rem}
+.project-card{border:0.5px solid var(--border-med);border-radius:18px;overflow:hidden;background:var(--surface-card);transition:all .28s cubic-bezier(.25,.8,.25,1);box-shadow:0 1px 18px rgba(45,45,45,0.04)}
+.project-card:hover{background:var(--surface-card-hover);box-shadow:0 8px 30px var(--card-shadow);transform:translateY(-2px)}
+.project-img-wrap{position:relative;width:100%;background:#f2f1ec;overflow:hidden;height:330px;cursor:zoom-in;border-bottom:0.5px solid var(--border)}
 .project-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s ease}
-.project-card:first-child .project-img-wrap{height:430px;background:#f7f7f5}
-.project-card:first-child .project-img-wrap img{object-fit:contain}
+.project-card:first-child .project-img-wrap{height:360px;background:#f7f7f5}
+.project-card:first-child .project-img-wrap img{object-fit:cover}
 .project-card:hover .project-img-wrap img{transform:scale(1.025)}
 .project-img-overlay{display:none}
 .project-img-wrap a{display:block;width:100%;height:100%;position:absolute;inset:0}
@@ -178,6 +184,43 @@ section{padding:5.5rem 2rem;max-width:1000px;margin:0 auto}
 .project-block h4{font-size:10px;letter-spacing:.12em;color:var(--accent-dark);text-transform:uppercase;margin-bottom:.5rem;font-weight:500}
 .project-block p,.project-block li{font-size:12.5px;color:var(--muted);line-height:1.75}
 .project-block ul{padding-left:1.1rem}
+.case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1.5rem 0}
+.case-chip{border:0.5px solid var(--border);border-radius:14px;background:var(--surface-soft);padding:1rem}
+.case-chip h4{font-size:10px;letter-spacing:.12em;color:var(--accent-dark);text-transform:uppercase;margin-bottom:.35rem;font-weight:600}
+.case-chip p{font-size:12px;color:var(--muted);line-height:1.55}
+.ui-showcase{display:grid;grid-template-columns:1.05fr .95fr;gap:1rem;margin:1.55rem 0 1.25rem}
+.ui-panel{border:0.5px solid var(--border-med);border-radius:16px;background:rgba(255,255,255,0.42);padding:1rem;min-width:0}
+[data-theme="dark"] .ui-panel{background:rgba(255,255,255,0.05)}
+.ui-panel-title{font-size:10px;letter-spacing:.12em;color:var(--accent-dark);text-transform:uppercase;margin-bottom:.85rem;font-weight:600}
+.mini-phone{max-width:240px;margin:0 auto;border:0.5px solid var(--border-med);border-radius:26px;background:var(--bg);padding:.8rem;box-shadow:0 10px 24px rgba(45,45,45,0.08)}
+.mini-topbar{height:30px;border-radius:16px;background:var(--surface-soft);display:flex;align-items:center;gap:.4rem;padding:0 .55rem;margin-bottom:.75rem}
+.mini-search{height:12px;flex:1;border-radius:100px;background:var(--surface-pill)}
+.mini-dot{width:10px;height:10px;border-radius:50%;background:var(--accent-dark);opacity:.75}
+.mini-banner{height:58px;border-radius:14px;background:linear-gradient(135deg,var(--accent),rgba(255,255,255,0.75));margin-bottom:.7rem;padding:.65rem}
+.mini-line{height:7px;border-radius:100px;background:var(--text);opacity:.72;margin-bottom:.35rem}
+.mini-line.short{width:48%}
+.mini-line.mid{width:68%}
+.mini-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-bottom:.75rem}
+.mini-cat{height:38px;border-radius:12px;background:var(--surface-soft);border:0.5px solid var(--border)}
+.mini-products{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+.mini-product{border:0.5px solid var(--border);border-radius:12px;padding:.45rem;background:var(--surface-card)}
+.mini-thumb{height:45px;border-radius:9px;background:linear-gradient(135deg,#fff,var(--accent));margin-bottom:.4rem}
+.mini-price{height:8px;width:55%;border-radius:100px;background:var(--accent-dark);margin-bottom:.25rem}
+.mini-copy{height:6px;border-radius:100px;background:var(--border-med)}
+.component-list{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+.component-card{border:0.5px solid var(--border);border-radius:12px;background:var(--surface-soft);padding:.75rem;min-height:74px}
+.component-card strong{display:block;font-size:12px;color:var(--text);margin-bottom:.2rem}
+.component-card span{display:block;font-size:11px;color:var(--muted);line-height:1.45}
+.storefront-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:.75rem}
+.storefront-hero,.storefront-page,.storefront-cta{border:0.5px solid var(--border);border-radius:14px;background:var(--surface-soft);padding:.85rem}
+.storefront-hero{min-height:150px;background:linear-gradient(135deg,rgba(255,255,255,0.75),var(--accent))}
+.storefront-page{min-height:150px}
+.storefront-cta{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.storefront-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dark);margin-bottom:.5rem}
+.product-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin-top:.55rem}
+.product-tile{height:54px;border-radius:10px;background:rgba(255,255,255,0.65);border:0.5px solid var(--border)}
+.price-pill{display:inline-flex;border-radius:100px;background:var(--text);color:var(--bg);font-size:11px;padding:.25rem .55rem;margin-top:.65rem}
+.cta-pill{border-radius:100px;background:var(--text);color:var(--bg);font-size:12px;padding:.42rem .8rem;white-space:nowrap}
 .project-insight{margin-top:1.5rem;border-top:0.5px solid var(--border);padding-top:1.35rem}
 .insight-text{font-size:13px;color:var(--muted);font-style:italic;line-height:1.7;border-left:2px solid var(--accent-dark);padding-left:1rem}
 .stack-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}
@@ -265,17 +308,25 @@ footer{border-top:0.5px solid var(--border-med);padding:2rem;text-align:center;f
 
 @media(max-width:768px){
   nav{width:calc(100vw - 32px);min-width:0;max-width:calc(100vw - 32px);top:12px;border-radius:16px;gap:1rem}
+  section{padding:4.25rem 2rem}
   .nav-links{display:none}
   .nav-role,.nav-sep{display:none}
   .nav-hamburger{display:flex}
-  .hero{grid-template-columns:minmax(0,1fr);padding-top:100px;width:100%;max-width:100%;overflow:hidden}
+  .hero{grid-template-columns:minmax(0,1fr);min-height:auto;padding-top:132px;padding-bottom:4rem;width:100%;max-width:100%;overflow:hidden;align-items:start}
   .hero-left,.hero-subtitle,.hero-desc,.hero-tag{width:calc(100vw - 4rem)!important;max-width:calc(100vw - 4rem)!important;min-width:0}
   .hero-subtitle,.hero-desc{overflow-wrap:anywhere}
   .hero-tag{white-space:normal}
   .hero-right{display:none}
   .hero h1{font-size:2.3rem}
   .hero-meta{grid-template-columns:1fr;max-width:100%}
-  .about-grid,.project-body{grid-template-columns:1fr}
+  .about-grid,.project-body,.case-grid,.ui-showcase,.storefront-grid{grid-template-columns:1fr}
+  .commerce-strip{grid-template-columns:1fr;gap:.6rem}
+  .project-img-wrap{height:260px}
+  .project-card:first-child .project-img-wrap{height:260px}
+  .project-content{padding:1.55rem}
+  .case-grid{gap:.65rem;margin:1.1rem 0}
+  .ui-showcase{gap:.75rem;margin:1.15rem 0}
+  .storefront-cta{grid-column:auto;align-items:flex-start;flex-direction:column}
   .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .contact-cards{grid-template-columns:1fr;max-width:100%}
   .project-header{flex-wrap:wrap;align-items:flex-start}
@@ -288,6 +339,10 @@ footer{border-top:0.5px solid var(--border-med);padding:2rem;text-align:center;f
   .nav-logo{overflow-wrap:anywhere;white-space:normal}
   .hero-meta{min-width:0}
   .skills-grid{grid-template-columns:1fr}
+  .hero-proof{gap:.35rem}
+  .proof-chip{font-size:10.5px}
+  .project-content{padding:1.25rem}
+  .component-list{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .hero-left,.hero-subtitle,.hero-desc,.hero-tag{width:min(calc(100vw - 4rem),326px)!important;max-width:min(calc(100vw - 4rem),326px)!important}
@@ -334,8 +389,14 @@ footer{border-top:0.5px solid var(--border-med);padding:2rem;text-align:center;f
       <span class="hero-dot"></span>Disponible para roles UI Designer · Shopify · E-commerce
     </div>
     <h1>Brenda Vega</h1>
-    <div class="hero-subtitle">UI Designer focused on E-commerce &amp; Responsive Interfaces</div>
-    <p class="hero-desc">Diseño interfaces comerciales para tiendas digitales, product pages y layouts responsivos, combinando jerarquía visual, sistemas de componentes y criterios de conversión para experiencias claras en mobile, tablet y desktop.</p>
+    <div class="hero-subtitle">UI Designer focused on E-commerce, Responsive Interfaces &amp; Conversion-driven Design</div>
+    <p class="hero-desc">Diseño product interfaces para Shopify y e-commerce: storefronts, product pages, collections y sistemas visuales responsivos pensados para claridad, confianza y conversión.</p>
+    <div class="hero-proof">
+      <span class="proof-chip">Shopify storefront UI</span>
+      <span class="proof-chip">Product pages</span>
+      <span class="proof-chip">Mobile-first commerce</span>
+      <span class="proof-chip">Conversion-focused layouts</span>
+    </div>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#projects">Ver proyectos →</a>
       <a class="btn btn-ghost" href="CV_UIDesigner_Getmore_BrendaVega.pdf" target="_blank">Ver CV</a>
@@ -369,10 +430,22 @@ footer{border-top:0.5px solid var(--border-med);padding:2rem;text-align:center;f
   <div class="section-title">Diseñadora enfocada en e-commerce UI</div>
   <div class="about-grid reveal">
     <div class="about-text">
-      <p>Soy UI Designer con formación en Diseño Gráfico (UASLP) y Marketing Digital (IEU), enfocada en interfaces para e-commerce, Shopify y productos digitales responsivos.</p>
-      <p>Mi trabajo une composición visual, jerarquía de contenido y criterios comerciales: que una tienda se vea clara, confiable y fácil de recorrer desde el primer scroll hasta la ficha de producto.</p>
-      <p>Diseño desde sistemas de componentes en Figma: navegación, banners, cards, grillas, product pages, estados y layouts adaptables para mobile, tablet y desktop.</p>
-      <p>Busco roles donde pueda aportar claridad visual, consistencia de interfaz y sensibilidad por la conversión sin perder una experiencia cuidada para el usuario.</p>
+      <p>Diseño interfaces comerciales para e-commerce y Shopify, con foco en mobile, product pages, collections y layouts que ayudan al usuario a decidir rápido.</p>
+      <p>Trabajo desde sistemas en Figma: navegación, banners, cards, grillas, CTAs, estados y spacing consistente para que cada pantalla se sienta parte de la misma tienda.</p>
+      <div class="commerce-strip">
+        <div class="commerce-item">
+          <div class="commerce-kicker">Focus</div>
+          <div class="commerce-value">Storefront UI</div>
+        </div>
+        <div class="commerce-item">
+          <div class="commerce-kicker">Output</div>
+          <div class="commerce-value">Product layouts</div>
+        </div>
+        <div class="commerce-item">
+          <div class="commerce-kicker">Method</div>
+          <div class="commerce-value">Responsive system</div>
+        </div>
+      </div>
     </div>
     <div class="pillars">
       <div class="pillar">
@@ -410,32 +483,83 @@ footer{border-top:0.5px solid var(--border-med);padding:2rem;text-align:center;f
       <div class="project-content">
         <div class="project-header">
           <span class="project-num">CASO 01</span>
-          <span class="project-tag">Mobile UI · E-commerce · Product Cards</span>
+          <span class="project-tag">UI adaptation · Responsive e-commerce case study</span>
         </div>
         <div class="project-title">Tokopedia Mobile Adaptation</div>
-        <div class="project-sub">Case study principal · Mobile-first UI exercise</div>
+        <div class="project-sub">Main case study · Marketplace UI adapted for mobile commerce</div>
         <div class="project-body">
           <div class="project-block">
-            <h4>Objetivo</h4>
-            <p>Adaptar una experiencia de marketplace a una lectura mobile-first, priorizando navegación, producto, precio, confianza y acciones de compra.</p>
+            <h4>Overview</h4>
+            <p>UI adaptation de marketplace enfocada en navegación, categorías, cards, precio, reviews y decisión de compra en mobile.</p>
           </div>
           <div class="project-block">
-            <h4>Qué trabajé</h4>
-            <ul>
-              <li>Jerarquía visual para categorías, promos y producto</li>
-              <li>Componentes reutilizables para cards, banners y navegación</li>
-              <li>Sistema de spacing para mantener ritmo entre secciones</li>
-              <li>Patrones de product cards con foco en escaneo rápido</li>
-            </ul>
+            <h4>Challenge</h4>
+            <p>Ordenar mucha información comercial sin perder claridad visual ni consistencia entre módulos.</p>
           </div>
           <div class="project-block">
-            <h4>Criterio UI</h4>
+            <h4>UI Goals</h4>
             <ul>
-              <li>Mobile-first thinking</li>
-              <li>Navegación inferior y accesos rápidos</li>
-              <li>Separación clara entre contenido comercial y utilitario</li>
-              <li>Conversión y UX visual sin saturar la pantalla</li>
+              <li>Escaneo rápido</li>
+              <li>Product hierarchy</li>
+              <li>Reusable components</li>
+              <li>Conversion clarity</li>
             </ul>
+          </div>
+        </div>
+        <div class="case-grid">
+          <div class="case-chip">
+            <h4>Mobile-first</h4>
+            <p>Bottom navigation, search visible y accesos rápidos a categorías.</p>
+          </div>
+          <div class="case-chip">
+            <h4>Product hierarchy</h4>
+            <p>Imagen, precio, rating y promoción organizados para lectura inmediata.</p>
+          </div>
+          <div class="case-chip">
+            <h4>Spacing system</h4>
+            <p>Ritmo entre banners, cards y secciones para evitar saturación.</p>
+          </div>
+          <div class="case-chip">
+            <h4>Components</h4>
+            <p>Cards, category chips, reviews, promo strips y navigation modules.</p>
+          </div>
+          <div class="case-chip">
+            <h4>Responsive adaptation</h4>
+            <p>Lógica preparada para escalar de mobile a tablet y desktop.</p>
+          </div>
+          <div class="case-chip">
+            <h4>Visual consistency</h4>
+            <p>Mismos radios, estados, sombras y proporciones en todo el flujo.</p>
+          </div>
+        </div>
+        <div class="ui-showcase">
+          <div class="ui-panel">
+            <div class="ui-panel-title">Mobile marketplace structure</div>
+            <div class="mini-phone" aria-label="Tokopedia mobile e-commerce UI mockup">
+              <div class="mini-topbar"><span class="mini-dot"></span><span class="mini-search"></span></div>
+              <div class="mini-banner">
+                <div class="mini-line mid"></div>
+                <div class="mini-line short"></div>
+              </div>
+              <div class="mini-cats">
+                <div class="mini-cat"></div><div class="mini-cat"></div><div class="mini-cat"></div><div class="mini-cat"></div>
+              </div>
+              <div class="mini-products">
+                <div class="mini-product"><div class="mini-thumb"></div><div class="mini-price"></div><div class="mini-copy"></div></div>
+                <div class="mini-product"><div class="mini-thumb"></div><div class="mini-price"></div><div class="mini-copy"></div></div>
+                <div class="mini-product"><div class="mini-thumb"></div><div class="mini-price"></div><div class="mini-copy"></div></div>
+                <div class="mini-product"><div class="mini-thumb"></div><div class="mini-price"></div><div class="mini-copy"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-panel">
+            <div class="ui-panel-title">Reusable e-commerce components</div>
+            <div class="component-list">
+              <div class="component-card"><strong>Product cards</strong><span>Image, price, badge, rating and quick scan copy.</span></div>
+              <div class="component-card"><strong>Categories</strong><span>Compact entry points for browsing and filtering.</span></div>
+              <div class="component-card"><strong>Reviews</strong><span>Trust signals placed close to product information.</span></div>
+              <div class="component-card"><strong>Navigation</strong><span>Search, account, cart and bottom actions.</span></div>
+            </div>
           </div>
         </div>
         <div class="project-insight">
@@ -462,26 +586,62 @@ footer{border-top:0.5px solid var(--border-med);padding:2rem;text-align:center;f
         <div class="project-sub">E-commerce UI · Shopify storefront concept</div>
         <div class="project-body">
           <div class="project-block">
-            <h4>Objetivo</h4>
-            <p>Convertir una identidad dulce y comercial en una experiencia Shopify clara, cálida y lista para mostrar productos por colección.</p>
+            <h4>Homepage</h4>
+            <p>Storefront limpio con hero comercial, categorías destacadas, productos y secciones promocionales.</p>
           </div>
           <div class="project-block">
-            <h4>Qué incluye</h4>
+            <h4>Core pages</h4>
             <ul>
-              <li>Home e-commerce con banners promocionales</li>
-              <li>Product page con foco en imagen, precio y CTA</li>
-              <li>Collection page para navegación por categorías</li>
-              <li>Branding aplicado a componentes comerciales</li>
+              <li>Collection page</li>
+              <li>Product page</li>
+              <li>Promo banners</li>
+              <li>CTA sections</li>
             </ul>
           </div>
           <div class="project-block">
-            <h4>UI comercial</h4>
+            <h4>Visual direction</h4>
             <ul>
-              <li>Layouts responsivos para tienda</li>
-              <li>Grillas de producto y cards reutilizables</li>
-              <li>Secciones de campaña y destacados</li>
-              <li>Estética limpia tipo storefront</li>
+              <li>Clean commercial UI</li>
+              <li>Food/lifestyle tone</li>
+              <li>Responsive sections</li>
+              <li>Branding applied to commerce</li>
             </ul>
+          </div>
+        </div>
+        <div class="ui-showcase">
+          <div class="ui-panel">
+            <div class="ui-panel-title">Shopify storefront flow</div>
+            <div class="storefront-grid" aria-label="Dulce Felicidad Shopify storefront UI mockup">
+              <div class="storefront-hero">
+                <div class="storefront-label">Homepage banner</div>
+                <div class="mini-line mid"></div>
+                <div class="mini-line short"></div>
+                <span class="price-pill">Shop seasonal sweets</span>
+              </div>
+              <div class="storefront-page">
+                <div class="storefront-label">Collection page</div>
+                <div class="product-row">
+                  <div class="product-tile"></div><div class="product-tile"></div><div class="product-tile"></div>
+                  <div class="product-tile"></div><div class="product-tile"></div><div class="product-tile"></div>
+                </div>
+              </div>
+              <div class="storefront-cta">
+                <div>
+                  <div class="storefront-label">Product page CTA</div>
+                  <div class="mini-line mid"></div>
+                </div>
+                <span class="cta-pill">Add to cart</span>
+              </div>
+            </div>
+          </div>
+          <div class="ui-panel">
+            <div class="ui-panel-title">Commercial UI modules</div>
+            <div class="component-list">
+              <div class="component-card"><strong>Promo banners</strong><span>Seasonal campaigns and offer hierarchy.</span></div>
+              <div class="component-card"><strong>Product cards</strong><span>Image-first cards with price and CTA clarity.</span></div>
+              <div class="component-card"><strong>Collections</strong><span>Category browsing for sweets and gift sets.</span></div>
+              <div class="component-card"><strong>Responsive sections</strong><span>Reusable blocks for mobile and desktop storefronts.</span></div>
+            </div>
           </div>
         </div>
         <div class="project-insight">
